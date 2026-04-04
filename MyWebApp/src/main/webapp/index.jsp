@@ -1,95 +1,158 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+  <meta charset="UTF-8">
+  <title>My DevOps Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        header {
-            background: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        nav {
-            background: #555;
-            padding: 10px;
-            text-align: center;
-        }
+    body {
+      line-height: 1.6;
+      color: #333;
+    }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    header {
+      height: 100vh;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-        nav a:hover {
-            color: #ffd700;
-        }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
 
-        .hero {
-            background: #f4f4f4;
-            padding: 60px;
-            text-align: center;
-        }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
 
-        .section {
-            padding: 40px;
-            text-align: center;
-        }
+    .btn {
+      padding: 10px 20px;
+      background: #ff7e5f;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
+    .btn:hover {
+      background: #feb47b;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .about {
+      background: #f4f4f4;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media(max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Welcome to My Website</h1>
-    <p>Your simple one-page site</p>
-</header>
+  <!-- HERO SECTION -->
+  <header>
+    <div>
+      <h1>Hi, I'm Olamide 👋</h1>
+      <p>DevOps Engineer | Cloud | CI/CD | Automation</p>
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+  </header>
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div id="home" class="hero">
-    <h2>Home Section</h2>
-    <p>This is a simple homepage built with HTML and CSS.</p>
-</div>
-
-<div id="about" class="section">
+  <!-- ABOUT -->
+  <section class="about">
     <h2>About Me</h2>
-    <p>I am learning DevOps and web development.</p>
-</div>
+    <p>I am a passionate DevOps Engineer with experience in CI/CD pipelines, cloud infrastructure, and automation tools like Jenkins, Docker, Kubernetes, and Terraform.</p>
+  </section>
 
-<div id="contact" class="section">
+  <!-- SERVICES -->
+  <section>
+    <h2>What I Do</h2>
+    <div class="services">
+      <div class="card">
+        <h3>CI/CD Pipelines</h3>
+        <p>Automating builds and deployments using Jenkins and GitHub Actions.</p>
+      </div>
+
+      <div class="card">
+        <h3>Cloud Engineering</h3>
+        <p>Deploying scalable applications on AWS & Azure.</p>
+      </div>
+
+      <div class="card">
+        <h3>Containerization</h3>
+        <p>Using Docker & Kubernetes for modern application deployment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="about">
     <h2>Contact</h2>
-    <p>Email: example@email.com</p>
-</div>
+    <p>Email: your@email.com</p>
+    <p>GitHub: github.com/yourusername</p>
+  </section>
 
-<footer class="footer">
-    <p>© 2026 My Website | All Rights Reserved</p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Olamide | DevOps Portfolio</p>
+  </footer>
 
 </body>
 </html>
-```
-
-
