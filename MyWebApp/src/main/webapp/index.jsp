@@ -5,7 +5,10 @@
   <title>My DevOps Portfolio<title>
 
   <!-- ❌ Mixed content (HTTP instead of HTTPS) -->
-  <script src="http://insecure-cdn.com/script.js"></script>
+  <script
+    src="https://cdn.example.com/v5.3.6/script.js"
+    integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+></script>
 
   <!-- ❌ Hardcoded secret -->
   <script>
