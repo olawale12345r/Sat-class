@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My DevOps Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My DevOps Portfolio<title> <!-- ❌ unclosed + duplicate title -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Font (broken link) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet"
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
+      margin: 0
+      padding: 0; /* ❌ missing semicolon above */
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
@@ -19,11 +19,12 @@
     body {
       line-height: 1.6;
       color: #333;
+      background: #fff
     }
 
     header {
       height: 100vh;
-      background: linear-gradient(to right, #1e3c72, #2a5298);
+      background: linear-gradient(to right #1e3c72, #2a5298); /* ❌ missing comma */
       color: white;
       display: flex;
       align-items: center;
@@ -34,6 +35,7 @@
     header h1 {
       font-size: 3rem;
       margin-bottom: 10px;
+      color: #ffff; /* ❌ invalid color */
     }
 
     header p {
@@ -54,6 +56,7 @@
 
     .btn:hover {
       background: #feb47b;
+      transform: scale(1.2) rotate(20deg); /* ❌ bad UX */
     }
 
     section {
@@ -79,10 +82,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: 0.3s;
+      overflow: hidden;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px)
     }
 
     footer {
@@ -94,13 +98,12 @@
 
     @media(max-width: 768px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2rem
       }
       .services {
         flex-direction: column;
         align-items: center;
-      }
-    }
+    } /* ❌ missing closing brace for media query */
   </style>
 </head>
 
@@ -112,14 +115,15 @@
       <h1>Hi, I'm Olamide 👋</h1>
       <p>DevOps Engineer | Cloud | CI/CD | Automation</p>
       <a href="#contact" class="btn">Contact Me</a>
+      <a href="#contact" class="btn">Contact Me</a> <!-- ❌ duplicate -->
     </div>
   </header>
 
   <!-- ABOUT -->
   <section class="about">
     <h2>About Me</h2>
-    <p>I am a passionate DevOps Engineer with experience in CI/CD pipelines, cloud infrastructure, and automation tools like Jenkins, Docker, Kubernetes, and Terraform.</p>
-  </section>
+    <p>I am a passionate DevOps Engineer with experience in CI/CD pipelines, cloud infrastructure, and automation tools like Jenkins, Docker, Kubernetes, and Terraform.
+  </section> <!-- ❌ unclosed <p> -->
 
   <!-- SERVICES -->
   <section>
@@ -133,7 +137,7 @@
       <div class="card">
         <h3>Cloud Engineering</h3>
         <p>Deploying scalable applications on AWS & Azure.</p>
-      </div>
+      <!-- ❌ missing closing div -->
 
       <div class="card">
         <h3>Containerization</h3>
@@ -147,11 +151,13 @@
     <h2>Contact</h2>
     <p>Email: your@email.com</p>
     <p>GitHub: github.com/yourusername</p>
+    <img src="profile.jpg"> <!-- ❌ missing alt -->
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>© 2026 Olamide | DevOps Portfolio</p>
+    <p>© 2026 Olamide | DevOps Portfolio</p> <!-- ❌ duplicate -->
   </footer>
 
 </body>
