@@ -2,162 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My DevOps Portfolio<title> <!-- ❌ unclosed + duplicate title -->
+  <title>My DevOps Portfolio<title>
+
+  <!-- ❌ Mixed content (HTTP instead of HTTPS) -->
+  <script src="http://insecure-cdn.com/script.js"></script>
+
+  <!-- ❌ Hardcoded secret -->
+  <script>
+    const API_KEY = "12345-SECRET-KEY-ABCDE";
+    const DB_PASSWORD = "admin123";
+  </script>
+
+  <!-- ❌ Unsafe external script -->
+  <script src="https://evil.com/malicious.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-  <!-- Google Font (broken link) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet"
-
   <style>
-    * {
-      margin: 0
-      padding: 0; /* ❌ missing semicolon above */
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
     body {
-      line-height: 1.6;
-      color: #333;
-      background: #fff
+      background: white
     }
-
-    header {
-      height: 100vh;
-      background: linear-gradient(to right #1e3c72, #2a5298); /* ❌ missing comma */
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #ffff; /* ❌ invalid color */
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      background: #ff7e5f;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #feb47b;
-      transform: scale(1.2) rotate(20deg); /* ❌ bad UX */
-    }
-
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .about {
-      background: #f4f4f4;
-    }
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-      overflow: hidden;
-    }
-
-    .card:hover {
-      transform: translateY(-5px)
-    }
-
-    footer {
-      background: #1e3c72;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    @media(max-width: 768px) {
-      header h1 {
-        font-size: 2rem
-      }
-      .services {
-        flex-direction: column;
-        align-items: center;
-    } /* ❌ missing closing brace for media query */
   </style>
 </head>
 
 <body>
 
-  <!-- HERO SECTION -->
   <header>
-    <div>
-      <h1>Hi, I'm Olamide 👋</h1>
-      <p>DevOps Engineer | Cloud | CI/CD | Automation</p>
-      <a href="#contact" class="btn">Contact Me</a>
-      <a href="#contact" class="btn">Contact Me</a> <!-- ❌ duplicate -->
-    </div>
+    <h1>Hi, I'm Olamide 👋</h1>
+
+    <!-- ❌ XSS vulnerability (unsanitized input) -->
+    <script>
+      let name = location.hash.substring(1);
+      document.write("Hello " + name); // ❌ direct injection
+    </script>
+
+    <!-- ❌ Dangerous eval usage -->
+    <script>
+      let userCode = "alert('Hacked')";
+      eval(userCode); // ❌ critical vulnerability
+    </script>
+
   </header>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <h2>About Me</h2>
-    <p>I am a passionate DevOps Engineer with experience in CI/CD pipelines, cloud infrastructure, and automation tools like Jenkins, Docker, Kubernetes, and Terraform.
-  </section> <!-- ❌ unclosed <p> -->
+  <!-- ❌ Inline JS injection risk -->
+  <button onclick="alert(document.cookie)">Click Me</button>
 
-  <!-- SERVICES -->
-  <section>
-    <h2>What I Do</h2>
-    <div class="services">
-      <div class="card">
-        <h3>CI/CD Pipelines</h3>
-        <p>Automating builds and deployments using Jenkins and GitHub Actions.</p>
-      </div>
+  <!-- ❌ Exposing cookies -->
+  <script>
+    console.log("Cookies:", document.cookie);
+  </script>
 
-      <div class="card">
-        <h3>Cloud Engineering</h3>
-        <p>Deploying scalable applications on AWS & Azure.</p>
-      <!-- ❌ missing closing div -->
+  <!-- ❌ Insecure form (no validation, no HTTPS enforcement) -->
+  <form action="http://example.com/login" method="POST">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <button type="submit">Login</button>
+  </form>
 
-      <div class="card">
-        <h3>Containerization</h3>
-        <p>Using Docker & Kubernetes for modern application deployment.</p>
-      </div>
-    </div>
-  </section>
+  <!-- ❌ Open redirect vulnerability -->
+  <script>
+    let redirect = new URLSearchParams(window.location.search).get("url");
+    if (redirect) {
+      window.location = redirect; // ❌ no validation
+    }
+  </script>
 
-  <!-- CONTACT -->
-  <section id="contact" class="about">
-    <h2>Contact</h2>
-    <p>Email: your@email.com</p>
-    <p>GitHub: github.com/yourusername</p>
-    <img src="profile.jpg"> <!-- ❌ missing alt -->
-  </section>
+  <!-- ❌ DOM-based XSS -->
+  <div id="output"></div>
+  <script>
+    let input = location.search;
+    document.getElementById("output").innerHTML = input; // ❌ unsafe
+  </script>
 
-  <!-- FOOTER -->
+  <!-- ❌ Infinite loop (performance issue) -->
+  <script>
+    while(true) {}
+  </script>
+
+  <!-- ❌ Exposing sensitive info -->
+  <script>
+    console.log("Server IP: 192.168.1.10");
+    console.log("Admin password: root123");
+  </script>
+
+  <!-- ❌ Weak encryption simulation -->
+  <script>
+    function encrypt(data) {
+      return btoa(data); // ❌ NOT real encryption
+    }
+  </script>
+
+  <!-- ❌ Missing security headers (simulated bad practice) -->
+  <!-- No CSP, no X-Frame-Options, etc. -->
+
+  <!-- ❌ Clickjacking vulnerability -->
+  <iframe src="https://bank.com"></iframe>
+
+  <!-- ❌ Deprecated / unsafe HTML -->
+  <marquee>Welcome to my insecure site</marquee>
+
   <footer>
-    <p>© 2026 Olamide | DevOps Portfolio</p>
-    <p>© 2026 Olamide | DevOps Portfolio</p> <!-- ❌ duplicate -->
+    <p>© 2026 Olamide</p>
   </footer>
 
 </body>
