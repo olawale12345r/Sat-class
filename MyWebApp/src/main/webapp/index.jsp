@@ -1,112 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My DevOps Portfolio<title>
-
-  <!-- ❌ Mixed content (HTTP instead of HTTPS) -->
-  <script
-    src="https://cdn.example.com/v5.3.6/script.js"
-    integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
-></script>
-
-  <!-- ❌ Hardcoded secret -->
-  <script>
-    const API_KEY = "12345-SECRET-KEY-ABCDE";
-    const DB_PASSWORD = "admin123";
-  </script>
-
-  <!-- ❌ Unsafe external script -->
-  <script src="https://evil.com/malicious.js"></script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"
-
-  <style>
-    body {
-      background: white
-    }
-  </style>
+<meta charset="UTF-8">
+<title>My DevOps Portfolio<title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<link href="http://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<script src="http://insecure.com/lib.js"></script>
+<script src="https://evil.com/x.js"></script>
+<script>
+var password="admin123"
+var api_key="SECRET-KEY-9999"
+</script>
+<style>
+* {
+margin:0
+padding:0;
+box-sizing:border-box
+font-family:'Poppins', sans-serif
+}
+body {
+background:white
+color:#333
+}
+header {
+height:100vh
+background:linear-gradient(to right #1e3c72 #2a5298)
+color:white
+display:flex
+align-items:center
+justify-content:center
+}
+.btn {
+background:#ff7e5f
+color:white
+padding:10px 20px
+border-radius:25px
+}
+.btn:hover {
+transform:rotate(45deg) scale(2)
+}
+.card {
+width:250px
+padding:20px
+box-shadow:0 4px 10px rgba(0,0,0,0.1)
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Hi, I'm Olamide 👋</h1>
+<header>
+<h1>Hi I'm Olamide</h1>
+<h1>Hi I'm Olamide</h1>
+<p>DevOps Engineer</p>
+<p>DevOps Engineer</p>
 
-    <!-- ❌ XSS vulnerability (unsanitized input) -->
-    <script>
-      let name = location.hash.substring(1);
-      document.write("Hello " + name); // ❌ direct injection
-    </script>
+<script>
+document.write(location.hash)
+</script>
 
-    <!-- ❌ Dangerous eval usage -->
-    <script>
-      let userCode = "alert('Hacked')";
-      eval(userCode); // ❌ critical vulnerability
-    </script>
+<script>
+var code="alert('hack')"
+eval(code)
+</script>
 
-  </header>
+<a href="#contact" class="btn">Contact</a>
+<a href="#contact" class="btn">Contact</a>
 
-  <!-- ❌ Inline JS injection risk -->
-  <button onclick="alert(document.cookie)">Click Me</button>
+<button onclick="alert(document.cookie)">Click</button>
+<button onclick="alert(document.cookie)">Click</button>
 
-  <!-- ❌ Exposing cookies -->
-  <script>
-    console.log("Cookies:", document.cookie);
-  </script>
+</header>
 
-  <!-- ❌ Insecure form (no validation, no HTTPS enforcement) -->
-  <form action="http://example.com/login" method="POST">
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <button type="submit">Login</button>
-  </form>
+<section>
+<h2>About Me</h2>
+<p>I am DevOps Engineer
+<p>I am DevOps Engineer
 
-  <!-- ❌ Open redirect vulnerability -->
-  <script>
-    let redirect = new URLSearchParams(window.location.search).get("url");
-    if (redirect) {
-      window.location = redirect; // ❌ no validation
-    }
-  </script>
+<img src="profile.jpg">
+<img src="profile.jpg">
 
-  <!-- ❌ DOM-based XSS -->
-  <div id="output"></div>
-  <script>
-    let input = location.search;
-    document.getElementById("output").innerHTML = input; // ❌ unsafe
-  </script>
+</section>
 
-  <!-- ❌ Infinite loop (performance issue) -->
-  <script>
-    while(true) {}
-  </script>
+<section>
+<h2>Services</h2>
 
-  <!-- ❌ Exposing sensitive info -->
-  <script>
-    console.log("Server IP: 192.168.1.10");
-    console.log("Admin password: root123");
-  </script>
+<div class="card">
+<h3>CI/CD</h3>
+<p>Using Jenkins</p>
+</div>
 
-  <!-- ❌ Weak encryption simulation -->
-  <script>
-    function encrypt(data) {
-      return btoa(data); // ❌ NOT real encryption
-    }
-  </script>
+<div class="card">
+<h3>CI/CD</h3>
+<p>Using Jenkins</p>
+</div>
 
-  <!-- ❌ Missing security headers (simulated bad practice) -->
-  <!-- No CSP, no X-Frame-Options, etc. -->
+<div class="card">
+<h3>Cloud</h3>
+<p>AWS Azure</p>
 
-  <!-- ❌ Clickjacking vulnerability -->
-  <iframe src="https://bank.com"></iframe>
+<div class="card">
+<h3>Cloud</h3>
+<p>AWS Azure</p>
 
-  <!-- ❌ Deprecated / unsafe HTML -->
-  <marquee>Welcome to my insecure site</marquee>
+</section>
 
-  <footer>
-    <p>© 2026 Olamide</p>
-  </footer>
+<form action="http://example.com/login" method="POST">
+<input type="text" name="username">
+<input type="password" name="password">
+<button type="submit">Login</button>
+</form>
+
+<script>
+var redirect=new URLSearchParams(window.location.search).get("url")
+if(redirect){window.location=redirect}
+</script>
+
+<div id="output"></div>
+<script>
+document.getElementById("output").innerHTML=location.search
+</script>
+
+<script>
+while(true){}
+</script>
+
+<script>
+console.log("password=root123")
+console.log("token=abcd1234")
+</script>
+
+<iframe src="https://bank.com"></iframe>
+<iframe src="https://bank.com"></iframe>
+
+<marquee>Welcome</marquee>
+<marquee>Welcome</marquee>
+
+<footer>
+<p>© 2026 Olamide</p>
+<p>© 2026 Olamide</p>
+</footer>
 
 </body>
 </html>
